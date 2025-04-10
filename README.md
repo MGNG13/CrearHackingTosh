@@ -1,51 +1,127 @@
-# Crear HackingTosh
+# 🍏 Crear HackingTosh
 
-> *Este repositorio esta pensado solo para instalar desde Windows los datos necesarios para crear la Hackingtosh. Solo tiene soporte probado para procesador Intel, no se ha probado si funciona con otros procesadores y otras GPU.*
->
-> ***Solo es un repositorio de documentado personal de Hackingtosh, no es un tutorial exacto para todos los dispositivos.***
+> ⚠️ **Este repositorio está diseñado exclusivamente para preparar desde Windows los archivos necesarios para crear un Hackintosh.**
+> 
+> - Solo se ha probado con procesadores **Intel**. No se garantiza compatibilidad con otras arquitecturas o GPUs.
+> - Esta guía es un **registro personal de configuración**, **no** un tutorial universal para todos los dispositivos.
 
-## *Repositorio basado en esta configuración*
+---
+
+## 🧩 Basado en la siguiente configuración de hardware
+
 ![Perfil actual](https://github.com/MGNG13/CrearHackingTosh/blob/main/components.png?raw=true)
 
 ---
 
-## Pre-requisitos
-1. Descargar el repo de <a href="https://github.com/lzhoang2801/OpCore-Simplify">OpCore-Simplify</a>
-2. Descargar el release .zip de <a href="https://github.com/acidanthera/OpenCorePkg">OpenCore</a>
-3. Descargar el repo de <a href="https://github.com/corpnewt/SSDTTime">SSDTTime</a> (Para extraer las ACPI Tables debido a que OpCore-Simplify no puede generarlas y marca errores.)
+## ✅ Requisitos Previos
 
-## Pasos
-**Sigue todos los pasos de OpCore-Simplify hasta la sección de las `ACPI Tables`**
+Antes de comenzar, asegúrate de descargar lo siguiente:
 
-Si no te aparece este mismo resultado o algo similar sigue los siguientes pasos, de lo contrario salta este paso.
+1. 📦 [Repositorio OpCore-Simplify](https://github.com/lzhoang2801/OpCore-Simplify)
+2. 🧰 [Release (.zip) de OpenCore](https://github.com/acidanthera/OpenCorePkg)
+3. 🛠️ [Repositorio SSDTTime](https://github.com/corpnewt/SSDTTime) – Para extraer las tablas ACPI, ya que OpCore-Simplify **no** puede generarlas correctamente.
+
+---
+
+## 🪜 Pasos Iniciales
+
+Sigue todos los pasos del repositorio **OpCore-Simplify** hasta llegar a la sección de **`ACPI Tables`**.
+
+📌 Si obtienes un resultado como este, puedes continuar. Si **no** obtienes este resultado, sigue los pasos alternativos a continuación:
 
 ![Resultado esperado](https://camo.githubusercontent.com/260cdc2dd9586fd9bf8ee125d88855967b692e9ec844d5d41f0ecd6bf117a0f0/68747470733a2f2f692e696d6775722e636f6d2f53624c364e36762e706e67)
 
-### Error: cygwin1.dll -> ACPI Tables no encontradas
-![cygwin1.dll](https://github.com/MGNG13/CrearHackingTosh/blob/main/cygwin.png?raw=true)
+---
+
+### ❌ Error: `cygwin1.dll` – Tablas ACPI no encontradas
+
+- Este error indica que **no se pudieron generar las tablas ACPI** correctamente.
+  
+![cygwin1.dll](https://github.com/MGNG13/CrearHackingTosh/blob/main/cygwin.png?raw=true)  
 ![No valid .aml files were found!](https://github.com/MGNG13/CrearHackingTosh/blob/main/aml_not_found.png?raw=true)
 
-Para este momento vamos a usar SSDTTime para poder extraer ACPI Tables de forma correcta con una herramienta que provee Intel para extraer estas tablas de forma correcta.
+#### ✅ Solución con SSDTTime
+
+Usaremos SSDTTime junto con herramientas oficiales de Intel para extraer correctamente las tablas ACPI:
 
 ![ssdttime](https://github.com/MGNG13/CrearHackingTosh/blob/main/ssdttime.png?raw=true)
 
-1. En este punto debemos seleccionar P para generar las tablas y guardarlas en `results` de SSDTTime.
-![ssdttime_generar_tablas](https://github.com/MGNG13/CrearHackingTosh/blob/main/tables_0.png?raw=true)
+1. Ejecuta SSDTTime y presiona `P` para generar las tablas. Se guardarán en el directorio `results`.
 
-2. Ya una vez generado se mostrará algo así.
-![ssdttime_tablas_generadas](https://github.com/MGNG13/CrearHackingTosh/blob/main/tables_1.png?raw=true)
+![Generar tablas](https://github.com/MGNG13/CrearHackingTosh/blob/main/tables_0.png?raw=true)
 
-### Ingresar tablas en OpCore-Simplify
-En este paso simplemente debemos de pegar la ruta de nuestras tablas generadas por SSDTTime.
-![paso_1](https://github.com/MGNG13/CrearHackingTosh/blob/main/drag_n_drop_acpi_tables.png?raw=true)
-![paso_2](https://github.com/MGNG13/CrearHackingTosh/blob/main/ready_drag_n_drop.png?raw=true)
+2. Las tablas generadas deben verse así:
 
-### OpCore-Simplify Build OpenCore EFI
-En este paso simplemente necesitamos customizar los Kexts que son los que nos van a permitir que todo funcione correctamente basado en nuestra computadora. También podemos customizar los ACPI Patch y SMBIOS (este no se recomienda ya que OpCore Simplified lo adapta basado en nuestro procesador).
+![Tablas generadas](https://github.com/MGNG13/CrearHackingTosh/blob/main/tables_1.png?raw=true)
 
-**Al final de todo esto vamos a construir nuestra EFI de OpCore-Simplify para que funcione correctamente nuestra hackingtosh.**
+---
 
-![Build](https://github.com/MGNG13/CrearHackingTosh/blob/main/pre_build.png?raw=true)
+## 📥 Integrar tablas ACPI en OpCore-Simplify
 
-<mark>Hasta este punto tenemos las ACPI Tables generadas por SSDTTime y la EFI de nuestro MacOS.</mark>
+Copia y pega la ruta de tus tablas generadas por SSDTTime dentro de OpCore-Simplify:
 
+![Paso 1](https://github.com/MGNG13/CrearHackingTosh/blob/main/drag_n_drop_acpi_tables.png?raw=true)  
+![Paso 2](https://github.com/MGNG13/CrearHackingTosh/blob/main/ready_drag_n_drop.png?raw=true)
+
+---
+
+## 🛠️ Personalizar y construir EFI
+
+En esta etapa puedes:
+
+- Ajustar los **Kexts** para que coincidan con tu hardware.
+- (Opcional) Personalizar los parches **ACPI** y **SMBIOS** (aunque lo recomendado es dejar que OpCore-Simplify lo genere automáticamente con base en tu CPU).
+
+🔧 Al finalizar, se generará tu carpeta **EFI** lista para arrancar tu Hackintosh.
+
+![Construcción de EFI](https://github.com/MGNG13/CrearHackingTosh/blob/main/pre_build.png?raw=true)
+
+📝 *Hasta este punto, ya deberías tener tus tablas ACPI y la carpeta EFI generadas correctamente.*
+
+---
+
+## 💽 Descargar la imagen de macOS
+
+Usa el script `macrecovery.py` incluido en OpenCore para descargar la imagen de macOS:
+
+📂 Ruta: `OpenCore-{version}-RELEASE\Utilities\macrecovery\macrecovery.py`
+
+![macrecovery1](https://github.com/MGNG13/CrearHackingTosh/blob/main/macrecover1.png?raw=true)  
+![macrecovery2](https://github.com/MGNG13/CrearHackingTosh/blob/main/macrecover2.png?raw=true)
+
+🧷 **Estructura del USB recomendada**:
+
+- Solo necesitas copiar el folder `com.apple.recovery.boot` desde el resultado del `macrecovery`.
+- Copia también tu carpeta **EFI** generada desde `Results\EFI` de OpCore-Simplify.
+
+📌 Resultado esperado:
+
+![Referencia](https://dortania.github.io/OpenCore-Install-Guide/assets/img/com-efi-done.a6fb730e.png)
+
+---
+
+## 🧩 ¿macOS no arranca sin USB?
+
+Una solución temporal es:
+
+1. Crear una partición FAT32 en el disco duro (de ~500 MB).
+2. Copiar los mismos archivos que hay en el USB a esa partición.
+   
+⚠️ No es la solución ideal, pero puede funcionar como bootloader de emergencia.
+
+📺 Referencias visuales:
+
+![Referencia 1](https://i3.ytimg.com/vi/rZ1iPYfB6Pk/maxresdefault.jpg)  
+![Referencia 2](https://i3.ytimg.com/vi/lpYMluGQTXY/maxresdefault.jpg)
+
+---
+
+## 🧠 Recomendación final
+
+🔗 **Lee la documentación oficial de Dortania mientras realizas tu configuración.** Te ayudará a:
+
+- Ajustar correctamente tu configuración EFI.
+- Finalizar la instalación de macOS.
+- Resolver errores comunes (Bluetooth, Wi-Fi, gráficos, etc.).
+
+📘 [Guía oficial de instalación de OpenCore – Dortania](https://dortania.github.io/OpenCore-Install-Guide/)
