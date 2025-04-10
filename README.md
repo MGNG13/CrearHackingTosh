@@ -19,7 +19,7 @@ Antes de comenzar, asegúrate de descargar lo siguiente:
 
 1. 📦 [Repositorio OpCore-Simplify](https://github.com/lzhoang2801/OpCore-Simplify)
 2. 🧰 [Release (.zip) de OpenCore](https://github.com/acidanthera/OpenCorePkg)
-3. 🛠️ [Repositorio SSDTTime](https://github.com/corpnewt/SSDTTime) – Para extraer las tablas ACPI, ya que OpCore-Simplify **no** puede generarlas correctamente.
+3. 🛠️ [Repositorio SSDTTime](https://github.com/corpnewt/SSDTTime) – Para extraer las tablas ACPI, ya que OpCore-Simplify **a veces no** puede generarlas correctamente.
 
 ---
 
@@ -109,10 +109,10 @@ Una solución temporal es:
    
 ⚠️ No es la solución ideal, pero puede funcionar como bootloader de emergencia.
 
-📺 Referencias visuales:
+📺 Referencias:
 
-![Referencia 1](https://i3.ytimg.com/vi/rZ1iPYfB6Pk/maxresdefault.jpg)  
-![Referencia 2](https://i3.ytimg.com/vi/lpYMluGQTXY/maxresdefault.jpg)
+<a href="https://www.youtube.com/watch?v=rZ1iPYfB6Pk&t=137s"><img src="https://i3.ytimg.com/vi/rZ1iPYfB6Pk/maxresdefault.jpg" alt="1"></img></a>
+<a href="https://www.youtube.com/watch?v=lpYMluGQTXY"><img src="https://i3.ytimg.com/vi/lpYMluGQTXY/maxresdefault.jpg" alt="2"></img></a>
 
 ---
 
