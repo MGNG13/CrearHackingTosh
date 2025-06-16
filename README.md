@@ -116,6 +116,16 @@ Una solución temporal es:
 
 ---
 
+## NOTAS
+
+#### iGPU 7MB/4MB
+
+Si cuentas con problemas de GPU como Glitch de preferencia en los boot-args usa `-igfxvesa` para desactivar este glitch y posteriormente editar con Hakintool en la seccion de Patch seleccionas la generación de tu procesador y en `platform-id` buscas el tipo de dispositivo dependiendo si es laptop, desktop o desktop tipo NUC. En patch seleccionas `Graphic Device` y si tienes problemas con tu configuración puedes directamente también seleccionar `Audio Device` y `PCI Devices` para que genere la configuración correcta de tu Patch de `DeviceProperties`.
+
+Si no te carga la pantalla después de esto o tienes un glitch esto ya no es directamente algo que tenga que ver con la configuración generada. Si tiene relación pero no siempre.
+
+---
+
 ## 🧠 Recomendación final
 
 🔗 **Lee la documentación oficial de Dortania mientras realizas tu configuración.** Te ayudará a:
